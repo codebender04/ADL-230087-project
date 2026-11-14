@@ -211,8 +211,16 @@ class RAGPipeline:
             self._llms[key] = OllamaLLM(
                 model=model, base_url=self.s.ollama_url,
                 temperature=temperature, num_ctx=self.s.num_ctx, num_predict=self.s.max_tokens,
+                client_kwargs={"timeout": 120},   # fail with an error instead of hanging forever
             )
         return self._llms[key]
+
+    def warm_up(self, model: Optional[str] = None) -> None:
+        """Load the LLM into (GPU) memory now, so the first real question isn't slow."""
+        try:
+            self.llm(model).invoke("Reply with OK.")
+        except Exception as e:  # warm-up is best effort
+            self._log(f"  (warm-up skipped: {e})")
 
     def retrieve(self, question: str, top_k: Optional[int] = None) -> List[Source]:
         results = self.db.similarity_search_with_score(question, k=top_k or self.s.top_k)

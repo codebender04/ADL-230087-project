@@ -26,7 +26,9 @@ BASE = Settings()
 @st.cache_resource(show_spinner="Loading the document index (first run embeds the PDF)...")
 def get_pipeline(chunk_size: int, chunk_overlap: int, rebuild_token: int) -> RAGPipeline:
     s = replace(BASE, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
-    return RAGPipeline(s, rebuild=rebuild_token > 0, verbose=True)
+    rag = RAGPipeline(s, rebuild=rebuild_token > 0, verbose=True)
+    rag.warm_up()
+    return rag
 
 
 def init_state():
