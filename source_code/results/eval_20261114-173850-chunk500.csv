@@ -1,0 +1,59 @@
+﻿model,id,category,question,expected,answer,refused,retrieved,best_score,low_confidence,keyword_recall,retrieval_hit,gen_seconds,verdict,notes
+qwen2.5:3b,Q01,program requirements,How many credits are required for the Computer Science major?,56 credits for the major requirements.,The Computer Science major requires a total of 56 credits as per the Major Requirements section on page 7 of the [CS_MajorHandbook.pdf].,False,CS_MajorHandbook.pdf p.7 (0.8304); CS_MajorHandbook.pdf p.7 (0.816); CS_MajorHandbook.pdf p.7 (0.8111); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.7 (0.7574),0.8304,False,1.0,1,0.58,,
+qwen2.5:3b,Q02,program requirements,What courses are required for the Computer Science major?,"CS101, CS201, CS203, MATH202, three intermediate courses, CS302, four advanced courses, and Capstone I & II (or two additional intermediate/advanced courses).","The required courses for the Computer Science major are as follows:
+
+- CS 101: Introduction to Programming (4 credits)
+- CS 201: Data Structures & Algorithms (4 credits)
+- CS 203: Computer Organization (4 credits)
+- MATH 202: Discrete Math (4 credits)
+- CS 302: Algorithms & Theory of Computing (4 credits)
+- Four advanced courses (16 credits)
+- Capstone I and Capstone II (8 credits)
+OR two additional intermediate courses (8 credits)
+OR two additional advanced courses (8 credits)
+
+These courses total 56 credits, which is the requirement for the Computer Science major.",False,CS_MajorHandbook.pdf p.7 (0.8455); CS_MajorHandbook.pdf p.7 (0.8181); CS_MajorHandbook.pdf p.7 (0.8156); CS_MajorHandbook.pdf p.11 (0.7949); CS_MajorHandbook.pdf p.13 (0.7921),0.8455,False,1.0,1,1.02,,
+qwen2.5:3b,Q03,program requirements,What are the requirements for a minor in Computer Science?,"24 credits / six courses: one programming course (CS101, CS103 or CS104), one 100/200-level CS course, CS201, one intermediate course, one 200/300-level CS course, one advanced course.","The requirements for a minor in Computer Science are as follows:
+
+- Complete at least one Computer Science course (MATH 202 - Discrete Math is also counted).
+- Take a total of six courses:
+  - One programming course (4 credits): CS 101: Introduction to Programming, CS 103: Programming for Data Science and Visualization, or CS 104: Introduction to Computer Science.
+  - One 100-level or 200-level CS course (4 credits).
+  - CS 201 – Data Structures & Algorithms (4 credits).
+  - One intermediate course (4 credits).
+  - One 200-level or 300-level CS course (4 credits).
+
+This totals 24 credits for the minor.",False,CS_MajorHandbook.pdf p.7 (0.8776); CS_MajorHandbook.pdf p.7 (0.857); CS_MajorHandbook.pdf p.7 (0.7942); CS_MajorHandbook.pdf p.11 (0.7781); CS_MajorHandbook.pdf p.7 (0.7561),0.8776,False,0.75,1,1.17,,
+qwen2.5:3b,Q04,program requirements,Who is eligible to take the Capstone project?,Minimum major GPA of 3.5 and approval of a successful application (CS 401: Capstone I).,Eligibility criteria for enrollment in CS 401: Capstone I include a minimum major GPA of 3.5 and approval of a successful application. (p. 9),False,CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6848); CS_MajorHandbook.pdf p.12 (0.6428); CS_MajorHandbook.pdf p.8 (0.6375); CS_MajorHandbook.pdf p.5 (0.6314),0.7363,False,1.0,1,0.35,,
+qwen2.5:3b,Q05,course offerings,What advanced courses can CS students choose from?,"e.g. Foundations of Software Engineering, Database Systems, Computer Security, Cloud Computing, HCI, Computer Graphics, Game Design, Machine Learning, Deep Learning, Advanced Deep Learning, Computer Vision, NLP, Optimization, Computational Social Media, Bioinformatics.","CS students can choose from the following advanced courses:
+
+• Foundations of Software Engineering
+• Database Systems
+• Computer Security
+• Cloud Computing
+• Human-Computer Interaction
+• Computer Graphics
+• Game Design & Development
+• Machine Learning
+• Advanced Deep Learning
+• Computer Vision
+• Natural Language Processing",False,CS_MajorHandbook.pdf p.8 (0.8214); CS_MajorHandbook.pdf p.8 (0.792); CS_MajorHandbook.pdf p.18 (0.78); CS_MajorHandbook.pdf p.11 (0.7756); CS_MajorHandbook.pdf p.7 (0.7633),0.8214,False,1.0,1,0.5,,
+qwen2.5:3b,Q06,course offerings,What are the prerequisites for Data Structures & Algorithms?,CS101 Introduction to Programming.,The prerequisites for Data Structures & Algorithms (CS201) are CS101.,False,CS_MajorHandbook.pdf p.14 (0.821); CS_MajorHandbook.pdf p.14 (0.7627); CS_MajorHandbook.pdf p.15 (0.758); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.17 (0.7549),0.821,False,1.0,1,0.23,,
+qwen2.5:3b,Q07,course offerings,What programming language is mainly used in CS201?,Java (with some Python/C++).,I couldn't find that in the documents.,True,CS_MajorHandbook.pdf p.14 (0.7737); CS_MajorHandbook.pdf p.15 (0.7711); CS_MajorHandbook.pdf p.16 (0.7598); CS_MajorHandbook.pdf p.11 (0.7542); CS_MajorHandbook.pdf p.17 (0.7512),0.7737,False,0.0,1,0.13,,
+qwen2.5:3b,Q08,course offerings,How often is Computer Networks offered?,"'On holding' (not currently scheduled), per the course catalogue.",Computer Networks is offered once a year (CS210).,False,CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.13 (0.6386); CS_MajorHandbook.pdf p.16 (0.6271); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.13 (0.5985),0.6455,False,0.0,1,0.19,,
+qwen2.5:3b,Q09,learning outcomes,What are the major learning outcomes of the CS program?,"MLO1 fundamentals in theory and systems; MLO2 explain emerging aspects (AI, ML, data science...); MLO3 develop real-world applications.","The Major Learning Outcomes (Major LOs) of the CS program are derived from the Core Curriculum and the Major Curriculum. They are presented in the following tables and are also mapped to the FUV Graduate Attributes. However, the specific Major LOs are not provided in the given context. (p. 5)",False,CS_MajorHandbook.pdf p.5 (0.7888); CS_MajorHandbook.pdf p.11 (0.7826); CS_MajorHandbook.pdf p.12 (0.7655); CS_MajorHandbook.pdf p.4 (0.7434); CS_MajorHandbook.pdf p.2 (0.7417),0.7888,False,0.0,1,0.53,,
+qwen2.5:3b,Q10,learning outcomes,What careers have CS graduates gone into?,"Software engineer, testing engineer, AI engineer, data engineer, business analyst, product owner, product development manager.","• Software engineer
+• Testing engineer
+• AI engineer
+• Data engineer
+• Business analyst
+• Product owner
+• Product development manager",False,CS_MajorHandbook.pdf p.5 (0.7973); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.11 (0.679); CS_MajorHandbook.pdf p.2 (0.6782); CS_MajorHandbook.pdf p.5 (0.6761),0.7973,False,1.0,1,0.28,,
+qwen2.5:3b,Q11,academic policies,When can a student formally declare Computer Science as their major?,After completing at least two CS courses (MATH202 Discrete Math also counts).,"A student can formally declare Computer Science as their major when they complete at least two Computer Science courses, with MATH 202 - Discrete Math also counted towards this requirement (p.7).",False,CS_MajorHandbook.pdf p.7 (0.86); CS_MajorHandbook.pdf p.7 (0.8094); CS_MajorHandbook.pdf p.4 (0.7684); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.12 (0.7438),0.86,False,1.0,1,0.36,,
+qwen2.5:3b,Q12,academic policies,Can exploratory courses count toward the CS major?,"Yes, up to 2 of the 6 exploratory courses (8 credits) can count toward the major.",I couldn't find that in the documents.,True,CS_MajorHandbook.pdf p.7 (0.7726); CS_MajorHandbook.pdf p.6 (0.7402); CS_MajorHandbook.pdf p.7 (0.7276); CS_MajorHandbook.pdf p.11 (0.7118); CS_MajorHandbook.pdf p.7 (0.7022),0.7726,False,0.0,1,0.16,,
+qwen2.5:3b,Q13,multi-hop,"If I want to take Advanced Deep Learning, which courses must I complete first?","CS311 requires CS313, which requires CS208, which requires CS103.","To take Advanced Deep Learning (CS311), you must complete the prerequisite course, which is CS313.",False,CS_MajorHandbook.pdf p.18 (0.8222); CS_MajorHandbook.pdf p.8 (0.7904); CS_MajorHandbook.pdf p.18 (0.7701); CS_MajorHandbook.pdf p.18 (0.7683); CS_MajorHandbook.pdf p.18 (0.7487),0.8222,False,0.33,1,0.26,,
+qwen2.5:3b,Q14,multi-hop,What is the difference between graduating with and without honors in CS?,Doing the capstone (Capstone I & II) leads to graduating with honors; taking two more intermediate/advanced courses instead means graduating without honors.,"In the fourth year of the Computer Science (CS) major, students have the option to graduate with honors or without honors. To graduate with honors, students can choose to do the capstone project. To graduate without honors, students can take two more intermediate or advanced courses.",False,CS_MajorHandbook.pdf p.8 (0.7326); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.5 (0.6342); CS_MajorHandbook.pdf p.12 (0.6227),0.7326,False,1.0,1,0.46,,
+qwen2.5:3b,Q15,ambiguous,What degree is awarded after completing the CS program?,B.S. Computer Science (p.1) - but p.6 says 'Bachelor of Science in Applied Mathematics' (a copy-paste error in the handbook).,The degree awarded after completing the CS program is a Bachelor of Science in Computer Science (B.S. Computer Science).,False,CS_MajorHandbook.pdf p.5 (0.7324); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.2 (0.7038); CS_MajorHandbook.pdf p.7 (0.703); CS_MajorHandbook.pdf p.7 (0.697),0.7324,False,1.0,1,0.23,,
+qwen2.5:3b,Q16,out of scope,What is the tuition fee for the CS program?,Not in the handbook - should say it can't find it.,I couldn't find that in the documents.,True,CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6435); CS_MajorHandbook.pdf p.7 (0.6391); CS_MajorHandbook.pdf p.7 (0.6333); CS_MajorHandbook.pdf p.13 (0.6321),0.6447,False,,,0.16,,
+qwen2.5:3b,Q17,out of scope,Can I transfer credits from another university toward the CS major?,Not in the handbook - should say it can't find it.,I couldn't find that in the documents.,True,CS_MajorHandbook.pdf p.7 (0.6821); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.7 (0.6723); CS_MajorHandbook.pdf p.7 (0.6693),0.6821,False,,,0.16,,
+qwen2.5:3b,Q18,out of scope,Who won the 2022 FIFA World Cup?,Unrelated - should refuse in strict mode.,I couldn't find that in the documents.,True,CS_MajorHandbook.pdf p.3 (0.4945); CS_MajorHandbook.pdf p.4 (0.4843); CS_MajorHandbook.pdf p.4 (0.4757); CS_MajorHandbook.pdf p.15 (0.4739); CS_MajorHandbook.pdf p.5 (0.4736),0.4945,False,,,0.15,,
