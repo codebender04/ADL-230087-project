@@ -154,5 +154,4 @@ if question:
         "role": "assistant", "content": answer if isinstance(answer, str) else str(answer),
         "sources": sources, "low_conf": low_conf, "meta": meta,
     })
-    if pending:
-        st.rerun()
+    st.rerun()   # redraw from history so the example buttons disappear
