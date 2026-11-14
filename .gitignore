@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+source_code/vector_store/
+demo_video/*.mp4
+demo_video/*.mov
+*.zip
+.DS_Store
