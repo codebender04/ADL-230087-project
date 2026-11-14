@@ -1,0 +1,24 @@
+# Alternative: run only the app in Docker and use the Ollama already running on the host
+# (no second copy of the models).
+#   docker compose -f docker/docker-compose.host-ollama.yml up --build
+name: rag-handbook-host
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: rag-handbook:latest
+    environment:
+      OLLAMA_URL: http://host.docker.internal:11434
+      RAG_LLM_MODEL: ${RAG_LLM_MODEL:-qwen2.5:3b}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # needed on Linux; harmless on Docker Desktop
+    volumes:
+      - ../source_code/data:/app/data:ro
+      - vector_store:/app/vector_store
+    ports:
+      - "${APP_PORT:-8501}:8501"
+
+volumes:
+  vector_store:

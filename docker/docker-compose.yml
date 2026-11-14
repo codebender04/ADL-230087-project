@@ -1,0 +1,52 @@
+# Full stack: Ollama server + one-shot model download + Streamlit app.
+# From the repository root:
+#   docker compose -f docker/docker-compose.yml up --build
+# Then open http://localhost:8501
+name: rag-handbook
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_models:/root/.ollama          # downloaded models survive restarts
+    # Not published on 11434 to avoid clashing with an Ollama already running on the host.
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  model-init:                                # pulls the models once, then exits
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["sh", "-c", "ollama pull nomic-embed-text && ollama pull ${RAG_LLM_MODEL:-qwen2.5:3b}"]
+    restart: "no"
+
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: rag-handbook:latest
+    depends_on:
+      model-init:
+        condition: service_completed_successfully
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      RAG_LLM_MODEL: ${RAG_LLM_MODEL:-qwen2.5:3b}
+      RAG_DATA_DIR: /app/data/cs_handbook
+      RAG_INDEX_DIR: /app/vector_store
+    volumes:
+      - ../source_code/data:/app/data:ro     # documents are mounted, not baked in
+      - vector_store:/app/vector_store       # persisted Chroma index
+    ports:
+      - "${APP_PORT:-8501}:8501"           # host port is configurable: APP_PORT=8502
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
+  vector_store:

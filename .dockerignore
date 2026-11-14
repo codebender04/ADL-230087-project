@@ -1,0 +1,10 @@
+**/__pycache__
+**/*.pyc
+**/.venv
+**/venv
+source_code/vector_store
+source_code/results
+source_code/data
+report
+demo_video
+.git
