@@ -34,22 +34,48 @@ can differ slightly from the evaluation run.
 
 ---
 
-## Video 2 – Task 2: Handbook chatbot and evaluation (~4–5 min)
+## Video 2 – Task 2: Handbook chatbot and evaluation (~5 min)
 
-**Goal:** show that the chatbot answers handbook questions, and that you tested and understand
-when it is right and when it is wrong.
+**Goal:** show that the chatbot answers handbook questions, and that you tested it and understand
+**why** it is right or wrong. The "why" matters most.
+
+Files to have open in tabs before recording (all in `source_code/`):
+`rag/pipeline.py`, `tests/test_questions.json`, `results/SUMMARY.md`, `results/failure_cases_qwen2.5-3b.md`.
+Open the `.md` files in VS Code's preview (Ctrl+Shift+V) so the tables look clean.
+
+### Part A – How it works (~45 s)
 
 | # | Do | Say |
 |---|---|---|
-| 1 | Show the README diagram (or `rag/pipeline.py`). | "This is how it works. The handbook PDF is split into chunks and embedded with nomic-embed-text, and the vectors are stored in Chroma. For each question, I find the 5 most similar chunks, put them into a prompt, and qwen2.5:3b writes the answer. The prompt tells the model to answer **only** from those chunks, to cite pages, and to say *I couldn't find that* otherwise." |
-| 2 | `python run.py -q "How many credits are required for the Computer Science major?"` | "Correct: 56 credits, page 7." |
-| 3 | `python run.py -q "Who is eligible to take the Capstone project?"` | "Also correct: a major GPA of 3.5 and an approved application." |
-| 4 | `python run.py -q "What is the difference between graduating with and without honors in CS?" --show-context` | "This is a failure. The handbook *does* explain this on page 8, but the model says it couldn't find it." |
-| 5 | Scroll through the printed chunks. | "Here's why. The answer sentence was cut in half when the text was split into chunks. Only the half about graduating *without* honors was retrieved. So this is a **retrieval and chunking** problem, not the model making something up. Given what it saw, saying it couldn't find the answer was reasonable." |
-| 6 | `python run.py -q "Who won the 2022 FIFA World Cup?"` | "An out-of-scope question. It correctly says it's not in the documents instead of using its own knowledge." |
-| 7 | Open `tests/test_questions.json` and scroll briefly. | "To test it properly, I wrote 18 questions: program requirements, courses, learning outcomes, policies, multi-step questions, an ambiguous one, and three that are out of scope." |
-| 8 | Open `results/SUMMARY.md` and show table 1 (model size comparison). | "`evaluate.py` runs all 18 questions on three model sizes: 0.5, 1.5 and 3 billion parameters. The 3b model followed the rules best. The 1.5b model invented a transfer-credit policy, and 0.5b often ignored the instructions." |
-| 9 | Scroll to table 3 in `SUMMARY.md` (or open `results/verdicts_qwen2.5-3b.md` for the details). | "I graded the 3b answers by hand: 10 correct, 4 incomplete, 3 incorrect and 1 ambiguous. Most errors come from chunking, for example a split sentence or a flattened table, or from the small model leaving out information it was given. The ambiguous one is because the handbook contradicts itself: page 6 says 'Applied Mathematics' instead of 'Computer Science'." |
+| 1 | Show the diagram at the top of the README (or `rag/pipeline.py`). | "For Task 2, the knowledge base is the CS Major Handbook. The PDF is split into chunks of about 1,000 characters, and each chunk is turned into a vector with nomic-embed-text and stored in Chroma. When a question comes in, I find the 5 most similar chunks and put them in a prompt. qwen2.5:3b writes the answer. The prompt says: answer **only** from these chunks, cite the page, and if the answer isn't there, say *I couldn't find that in the documents*." |
+
+### Part B – Live: answers that work (~1 min)
+
+| # | Do | Say |
+|---|---|---|
+| 2 | `python run.py -q "How many credits are required for the Computer Science major?"` | "56 credits, which matches page 7." |
+| 3 | `python run.py -q "Who is eligible to take the Capstone project?"` | "A major GPA of 3.5 and an approved application, page 9. Also correct." |
+| 4 | `python run.py -q "Who won the 2022 FIFA World Cup?"` | "This one is out of scope. The model knows the answer, but it says it isn't in the documents. That's what we want from a handbook assistant: it shouldn't answer from its own memory." |
+
+### Part C – Live: answers that fail, and why (~2 min)
+
+| # | Do | Say |
+|---|---|---|
+| 5 | `python run.py -q "What is the difference between graduating with and without honors in CS?" --show-context` | "This is a failure. It says it couldn't find the answer, but page 8 does explain it." |
+| 6 | Scroll up to the first printed chunk (p.8). Point at its first line: "two more intermediate or advanced courses to graduate without honors." | "Here's why. Look at the first chunk: it starts mid-sentence. The sentence was cut in half when the text was split into chunks. Only the half about graduating *without* honors was retrieved. The model saw half the information and refused to guess, which is correct behaviour. So this is a **chunking** problem, not a model problem." |
+| 7 | `python run.py -q "How often is Computer Networks offered?"` | "This one is worse. It says 'once a semester, page 16', but the course catalogue on page 13 says it's **on holding**. The catalogue row wasn't retrieved, so the model guessed, and a page number makes the wrong answer look trustworthy." |
+| 8 | `python run.py -q "What courses are required for the Computer Science major?"` | "This answer is incomplete. It leaves out Capstone I and II, even though that line was in the retrieved text. Its own list adds up to 48 credits, but it still says 56. This is a **generation** error: the information was there, and the model dropped it." |
+
+### Part D – The evaluation (~1.5 min)
+
+| # | Do | Say |
+|---|---|---|
+| 9 | Open `tests/test_questions.json`, scroll briefly. | "To test it properly, I wrote 18 questions covering requirements, courses, learning outcomes, policies, multi-step and ambiguous questions, and 3 out-of-scope ones. Each has an expected answer and page." |
+| 10 | Open `results/SUMMARY.md`, table 1. | "`evaluate.py` ran all 18 questions on three sizes of the same model: 0.5, 1.5 and 3 billion parameters. Retrieval is the same for all three, so the differences come only from the model that writes the answer. The 1.5b model invented a transfer-credit policy, while 3b correctly declined it, so I use 3b as the default." |
+| 11 | Open `results/failure_cases_qwen2.5-3b.md`, show the overview table and scroll through 2–3 cases (for example Q09 and Q13). | "I graded the 3b answers by hand: 10 correct, 4 incomplete, 3 incorrect and 1 ambiguous. This file shows each failure with the model's answer, what the handbook says, and why it failed. For example, in Q09 it listed the Core learning outcomes instead of the Major ones, because the two tables are next to each other and lose their structure when the PDF is converted to text. In Q13 it found only the first prerequisite and didn't follow the chain." |
+| 12 | Stay on that file. | "In summary, most errors come from how the text is split, or from the small model leaving out what it was given, not from it inventing facts. One question is ambiguous because the handbook contradicts itself: page 6 says 'Applied Mathematics' instead of 'Computer Science'." |
+
+Note: the live answers in Part C match the evaluation run word for word, so you can rely on them.
 
 ---
 
