@@ -1,0 +1,71 @@
+﻿id,category,question,expected,answer,verdict,failure_cause,reason
+Q01,program requirements,How many credits are required for the Computer Science major?,56 credits for the major requirements.,The major in Computer Science requires 56 credits.,correct,-,"56 credits, matches p.7."
+Q02,program requirements,What courses are required for the Computer Science major?,"CS101, CS201, CS203, MATH202, three intermediate courses, CS302, four advanced courses, and Capstone I & II (or two additional intermediate/advanced courses).","For the Computer Science major, the following courses are required:
+
+- CS 101: Introduction to Programming (4 credits)
+- CS 201: Data Structures & Algorithms (4 credits)
+- CS 203: Computer Organization (4 credits)
+- MATH 202: Discrete Math (4 credits)
+- Three intermediate courses (12 credits)
+- CS 302: Algorithms & Theory of Computing (4 credits)
+- Four advanced courses (16 credits)
+
+Total required credits for the major are 56.",incomplete,generation,"Lists 7 of the 8 requirements: leaves out 'Capstone I & II (8 credits) or two extra intermediate/advanced courses'. Its own list adds up to 48 credits but it still says 56. The capstone line WAS in the 4th retrieved chunk, so the model had it and dropped it."
+Q03,program requirements,What are the requirements for a minor in Computer Science?,"24 credits / six courses: one programming course (CS101, CS103 or CS104), one 100/200-level CS course, CS201, one intermediate course, one 200/300-level CS course, one advanced course.","The requirements for a minor in Computer Science are as follows:
+
+- One programming course (4 credits) which is either:
+  - CS 101: Introduction to Programming
+  - or CS 103: Programming for Data Science and Visualization
+  - or CS 104: Introduction to Computer Science
+
+- One 100-level or 200-level CS course (4 credits)
+
+- CS 201 – Data Structures & Algorithms (4 credits)
+
+- One intermediate course (4 credits)
+
+- One 200-level or 300-level CS course (4 credits)
+
+- One advanced course (4 credits)
+
+These requirements total 24 credits.",correct,-,"All six minor courses and the 24-credit total, matches p.7."
+Q04,program requirements,Who is eligible to take the Capstone project?,Minimum major GPA of 3.5 and approval of a successful application (CS 401: Capstone I).,Eligibility criteria for enrollment in CS 401: Capstone I include a minimum major GPA of 3.5 and approval of a successful application. (p. 9),correct,-,"Major GPA of 3.5 and an approved application, cites p.9."
+Q05,course offerings,What advanced courses can CS students choose from?,"e.g. Foundations of Software Engineering, Database Systems, Computer Security, Cloud Computing, HCI, Computer Graphics, Game Design, Machine Learning, Deep Learning, Advanced Deep Learning, Computer Vision, NLP, Optimization, Computational Social Media, Bioinformatics.","CS students can choose from the following advanced courses:
+
+- Foundations of Software Engineering
+- Database Systems
+- Computer Security
+- Cloud Computing
+- Human-Computer Interaction
+- Computer Graphics
+- Game Design & Development
+- Machine Learning
+- Deep Learning
+- Advanced Deep Learning
+- Computer Vision
+- Natural Language Processing
+- Optimization",incomplete,generation + chunking,Lists 13 of 15 advanced courses. 'Computational Social Media' was in the retrieved p.8 chunk but omitted (generation). 'Bioinformatics' continues onto p.9 and that chunk was not retrieved (page/chunk boundary).
+Q06,course offerings,What are the prerequisites for Data Structures & Algorithms?,CS101 Introduction to Programming.,The prerequisites for Data Structures & Algorithms (CS201) are CS101.,correct,-,"CS101, matches the catalogue (p.13) and description (p.14)."
+Q07,course offerings,What programming language is mainly used in CS201?,Java (with some Python/C++).,CS201: Data Structures & Algorithms uses Java as the main programming language. (p. 14),correct,-,"Java, cites p.14 (doesn't mention the secondary Python/C++, but the question asked for the main language)."
+Q08,course offerings,How often is Computer Networks offered?,"'On holding' (not currently scheduled), per the course catalogue.",Computer Networks is offered once a semester (p.16).,incorrect,retrieval,Says 'once a semester (p.16)'; the catalogue (p.13) says 'On holding'. The chunk with the CS210 catalogue row was not retrieved - only neighbouring table rows and the p.16 course description (which has no schedule). The model guessed and cited the wrong page.
+Q09,learning outcomes,What are the major learning outcomes of the CS program?,"MLO1 fundamentals in theory and systems; MLO2 explain emerging aspects (AI, ML, data science...); MLO3 develop real-world applications.","The Major Learning Outcomes (Major LOs) for the CS program are derived from the Core Curriculum and the Major Curriculum. They are presented in the following tables and are also mapped to the FUV Graduate Attributes. Here are the Core Learning Outcomes (Core LOs):
+
+- **CoreLO 1**: Students will be able to demonstrate global awareness and respect for diverse perspectives. (GA1, GA3, GA8)
+- **CoreLO 2**: Students will be able to locate and critically analyze information and present evidence-based arguments in written and oral forms. (GA1, GA4, GA5, GA6, GA7, GA9)
+- **CoreLO 3**: Students will be able to formulate quantitative inquiries and apply appropriate mathematical, statistical, or scientific methods to answer them. (GA1, GA4, GA5, GA7, GA9)
+- **CoreLO 4**: Students will be able to apply design and systems thinking processes to analyze and solve real-world problems. (GA1, GA2, GA4, GA5, GA9)",incorrect,generation (table flattening),"Asked for the Major LOs but listed the Core LOs (CoreLO 1-4). Both tables sit together on p.5 and PDF extraction flattens them into plain text, so the model confused the two."
+Q10,learning outcomes,What careers have CS graduates gone into?,"Software engineer, testing engineer, AI engineer, data engineer, business analyst, product owner, product development manager.","• Software engineer
+• Testing engineer
+• AI engineer
+• Data engineer
+• Business analyst
+• Product owner
+• Product development manager",correct,-,All seven careers from p.5.
+Q11,academic policies,When can a student formally declare Computer Science as their major?,After completing at least two CS courses (MATH202 Discrete Math also counts).,"A student formally declares Computer Science as their major when they complete at least two Computer Science courses, with MATH 202 - Discrete Math also counted towards this requirement (p.7, CS_MajorHandbook.pdf).",correct,-,"At least two CS courses, MATH 202 counts, cites p.7."
+Q12,academic policies,Can exploratory courses count toward the CS major?,"Yes, up to 2 of the 6 exploratory courses (8 credits) can count toward the major.","Yes, exploratory courses can count toward the CS major. According to the document, exploratory courses (2 courses, at the 100-level or 200-level, chosen from each of the three categories: E1-Arts and Humanities, E2-Social Sciences, and STEM) are required for the major and can count towards the total of 56 credits. (p.7)",incomplete,generation,"'Yes' is right, but it misses the limit (only up to 2 exploratory courses / 8 credits count) and wrongly says exploratory courses are 'required for the major'. The correct sentence was in the retrieved p.7 chunk."
+Q13,multi-hop,"If I want to take Advanced Deep Learning, which courses must I complete first?","CS311 requires CS313, which requires CS208, which requires CS103.","To take the course Advanced Deep Learning (CS311), you must complete the prerequisite course Deep Learning for Artificial Intelligence (CS313) first.",incomplete,multi-hop reasoning,"Gives only the direct prerequisite CS313. The full chain is CS311 <- CS313 <- CS208 <- CS103; following it needs several catalogue rows combined, and the model stops after one hop."
+Q14,multi-hop,What is the difference between graduating with and without honors in CS?,Doing the capstone (Capstone I & II) leads to graduating with honors; taking two more intermediate/advanced courses instead means graduating without honors.,I couldn't find that in the documents.,incorrect,retrieval (chunk boundary),"Says it couldn't find it, but p.8 explains it. The sentence is split across two chunks: only '...to graduate without honors' was retrieved, not '...do the capstone to graduate with honors'. Given what it saw, declining was reasonable - the failure is in chunking."
+Q15,ambiguous,What degree is awarded after completing the CS program?,B.S. Computer Science (p.1) - but p.6 says 'Bachelor of Science in Applied Mathematics' (a copy-paste error in the handbook).,The degree awarded after completing the CS program is a Bachelor of Science (B.S.) in Computer Science.,ambiguous,document,"Answers 'B.S. in Computer Science', matching p.1 - but p.6 says 'Bachelor of Science in Applied Mathematics' (a copy-paste error in the handbook). p.6 was retrieved; the model silently picked one version without flagging the contradiction."
+Q16,out of scope,What is the tuition fee for the CS program?,Not in the handbook - should say it can't find it.,I couldn't find that in the documents.,correct,-,Correctly says the handbook doesn't cover tuition.
+Q17,out of scope,Can I transfer credits from another university toward the CS major?,Not in the handbook - should say it can't find it.,I couldn't find that in the documents.,correct,-,Correctly says the handbook doesn't cover transfer credits (1.5b and the uncapped 0.5b invented a policy here).
+Q18,out of scope,Who won the 2022 FIFA World Cup?,Unrelated - should refuse in strict mode.,I couldn't find that in the documents.,correct,-,Correctly declines an unrelated question.

@@ -160,6 +160,7 @@ All settings live in [`source_code/rag/config.py`](source_code/rag/config.py) an
 ## Known limitations
 - Text inside images or scanned pages is not extracted (no OCR). Page 10 of the CS handbook (the student-journey diagram) is an image.
 - Tables (e.g. the PLO-course alignment table) are flattened into plain text by pypdf, so the model can't tell which column a mark belongs to.
+- Fixed-size chunks can split a sentence or table row; the half that holds the answer may not be retrieved (Q08, Q14 in [`results/verdicts_qwen2.5-3b.md`](source_code/results/verdicts_qwen2.5-3b.md)). The `retrieval_hit` metric is page-level, so it does not catch this.
 - Small models (0.5b) often ignore instructions, mix up course codes, or answer out-of-scope questions anyway.
 
 ## Demo videos
