@@ -8,7 +8,7 @@ can differ slightly from the evaluation run.
 ## Before every recording
 
 1. Ollama is running (its icon is in the system tray). For Video 3 it does not need to be.
-2. Open PowerShell in the project folder:
+2. Open PowerShell in the `source_code` folder (for Videos 1, 2 and 4; **Video 3 is different**, see its setup):
    ```powershell
    cd "D:\Courses\AY 26-27\Advanced Deep Learning\Final Project\ADL-project\source_code"
    .venv\Scripts\activate
@@ -83,9 +83,23 @@ Note: the live answers in Part C match the evaluation run word for word, so you 
 
 **Goal:** show that anyone can run the whole system with one command, without installing Python or Ollama.
 
-Before recording: open Docker Desktop and wait for "Engine running". **Quit the Ollama tray app**, which
-shows that the container doesn't rely on your own Ollama. Then open PowerShell in the
-**repository root** (`ADL-project`, not `source_code`).
+**Setup before recording (not on camera):**
+
+1. Open Docker Desktop and wait until it says **Engine running**. Until then, every `docker` command fails with
+   `failed to connect to the docker API`.
+2. **Quit the Ollama tray app** (right-click its icon → Quit). This shows that the containers don't use your own Ollama.
+3. Open a **new** PowerShell window. You don't need the `.venv`, because Docker doesn't use it. Go to the **repository root**,
+   the folder that contains `docker/`:
+   ```powershell
+   cd "D:\Courses\AY 26-27\Advanced Deep Learning\Final Project\ADL-project"
+   ```
+   If you run the commands from `source_code`, you'll get `docker-compose.yml ... cannot find the path specified`,
+   because there's no `docker` folder inside `source_code`.
+4. Stop the containers left over from an earlier run, so the video starts from a clean state:
+   ```powershell
+   docker compose -f docker/docker-compose.yml down
+   ```
+   This doesn't delete the volumes, so the models and the index stay downloaded.
 
 | # | Do | Say |
 |---|---|---|
