@@ -1,12 +1,14 @@
-# Evaluation 20261114-173800-models
+# Evaluation 20261114-173800-models-uncapped
 
 `embed=nomic-embed-text, chunk=1000/200, top_k=5, prompt=strict, prefixes=True, temp=0.1`
 
+Columns: **keyword recall** = share of expected key terms in the answer; **retrieval hit** = a correct page was among the retrieved chunks; **out-of-scope: said not in docs** = the model admitted the handbook doesn't cover an out-of-scope question (higher is better); **in-scope: said not in docs** = it wrongly claimed the handbook doesn't cover an answerable question (lower is better).
+
 ## qwen2.5:0.5b
 
-| avg keyword recall | retrieval hit rate | out-of-scope refused | avg generation |
-|---|---|---|---|
-| 0.62 | 1.00 | 2/3 | 41.0s |
+| avg keyword recall | retrieval hit rate | out-of-scope: said not in docs | in-scope: said not in docs | avg generation |
+|---|---|---|---|---|
+| 0.62 | 1.00 | 2/3 | 0/15 | 41.0s |
 
 ### Q01 [program requirements] How many credits are required for the Computer Science major?
 
@@ -14,7 +16,7 @@
 
 **Answer:** To formally declare Computer Science as their major, the student must complete at least two Computer Science courses (MATH 202 - Discrete Math is also counted).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q02 [program requirements] What courses are required for the Computer Science major?
 
@@ -22,7 +24,7 @@
 
 **Answer:** To formally declare Computer Science as their major, the student must complete at least two Computer Science courses (MATH 202 - Discrete Math is also counted).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 0.17 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 0.17 · retrieval hit 1 · said not in docs False
 
 ### Q03 [program requirements] What are the requirements for a minor in Computer Science?
 
@@ -30,7 +32,7 @@
 
 **Answer:** To formally declare a minor in Computer Science, the student must complete at least one Computer Science course (MATH 202 - Discrete Math is also counted).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q04 [program requirements] Who is eligible to take the Capstone project?
 
@@ -42,7 +44,7 @@
 
 Therefore, the answer is: "Eligible to take the Capstone project" is stated in the document.
 
-*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q05 [course offerings] What advanced courses can CS students choose from?
 
@@ -67,7 +69,7 @@ Therefore, the answer is: "Eligible to take the Capstone project" is stated in t
 
 These advanced courses cover various aspects of computer science, including algorithms, data structures, computer organization, discrete mathematics, and machine learning.
 
-*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q06 [course offerings] What are the prerequisites for Data Structures & Algorithms?
 
@@ -75,7 +77,7 @@ These advanced courses cover various aspects of computer science, including algo
 
 **Answer:** The prerequisites for Data Structures & Algorithms are CS101, which is the prerequisite for CS201: Data Structures & Algorithms.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q07 [course offerings] What programming language is mainly used in CS201?
 
@@ -83,7 +85,7 @@ These advanced courses cover various aspects of computer science, including algo
 
 **Answer:** Java is the main programming language used in CS201.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q08 [course offerings] How often is Computer Networks offered?
 
@@ -91,7 +93,7 @@ These advanced courses cover various aspects of computer science, including algo
 
 **Answer:** Once a year
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q09 [learning outcomes] What are the major learning outcomes of the CS program?
 
@@ -2410,7 +2412,7 @@ Major Learning Outcomes (Major LOs):
 2302. Develop real-world applications (e.g., software systems and frameworks, mobile apps, data pipeline, etc.) by using knowledge of computer science and other disciplines
 2303. Develop real-world applications (e.g
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q10 [learning outcomes] What careers have CS graduates gone into?
 
@@ -12796,7 +12798,7 @@ Major Learning Outcomes (Major LOs):
 6376. Data analyst
 6
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q11 [academic policies] When can a student formally declare Computer Science as their major?
 
@@ -12804,7 +12806,7 @@ Major Learning Outcomes (Major LOs):
 
 **Answer:** To formally declare Computer Science as their major, the student must complete at least two Computer Science courses (MATH 202 - Discrete Math is also counted).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q12 [academic policies] Can exploratory courses count toward the CS major?
 
@@ -12812,7 +12814,7 @@ Major Learning Outcomes (Major LOs):
 
 **Answer:** Yes, exploratory courses can count toward the CS major.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q13 [multi-hop] If I want to take Advanced Deep Learning, which courses must I complete first?
 
@@ -17937,7 +17939,7 @@ Major Learning Outcomes (Major LOs):
 215. CS579: Advanced Topics in Discrete Mathematics
 216. CS57
 
-*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.67 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.67 · retrieval hit 1 · said not in docs False
 
 ### Q14 [multi-hop] What is the difference between graduating with and without honors in CS?
 
@@ -17947,7 +17949,7 @@ Major Learning Outcomes (Major LOs):
 
 Graduating with honors means the student has achieved the required academic standards for graduation. They have completed their coursework and passed the final exams, and they have met the academic requirements for a degree.
 
-*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.5 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.5 · retrieval hit 1 · said not in docs False
 
 ### Q15 [ambiguous] What degree is awarded after completing the CS program?
 
@@ -17955,7 +17957,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** After completing the B.S. Computer Science program, graduates are awarded a Bachelor of Science (B.S.) degree.
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q16 [out of scope] What is the tuition fee for the CS program?
 
@@ -17963,7 +17965,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit  · said not in docs True
 
 ### Q17 [out of scope] Can I transfer credits from another university toward the CS major?
 
@@ -17971,7 +17973,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** Yes, you can transfer credits from another university toward the CS major. The document states that "Computer Science students have successfully applied to graduate programs in the United States and Europe. These programs include: MSc/PhD Computer Science, MSc Data Science, MSc Bioinformatics." This means that you can transfer credits from other universities to the CS major.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit  · said not in docs False
 
 ### Q18 [out of scope] Who won the 2022 FIFA World Cup?
 
@@ -17979,13 +17981,13 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit  · said not in docs True
 
 ## qwen2.5:1.5b
 
-| avg keyword recall | retrieval hit rate | out-of-scope refused | avg generation |
-|---|---|---|---|
-| 0.70 | 1.00 | 2/3 | 0.8s |
+| avg keyword recall | retrieval hit rate | out-of-scope: said not in docs | in-scope: said not in docs | avg generation |
+|---|---|---|---|---|
+| 0.70 | 1.00 | 2/3 | 0/15 | 0.8s |
 
 ### Q01 [program requirements] How many credits are required for the Computer Science major?
 
@@ -17993,7 +17995,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** 56 credits
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q02 [program requirements] What courses are required for the Computer Science major?
 
@@ -18010,7 +18012,7 @@ Graduating with honors means the student has achieved the required academic stan
 - Four advanced courses (16 credits)
 - Capstone I and Capstone II (8 credits)
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q03 [program requirements] What are the requirements for a minor in Computer Science?
 
@@ -18018,7 +18020,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** To formally declare a minor in Computer Science, the student must complete at least one Computer Science course (MATH 202 - Discrete Math is also counted).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q04 [program requirements] Who is eligible to take the Capstone project?
 
@@ -18026,7 +18028,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** Eligibility criteria for enrollment in CS 401: Capstone I include a minimum major GPA of 3.5 and approval of a successful application. More detailed guidelines for the Capstone in Computer Science can be found in the Computer Science Capstone Handbook.
 
-*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q05 [course offerings] What advanced courses can CS students choose from?
 
@@ -18041,7 +18043,7 @@ Graduating with honors means the student has achieved the required academic stan
 - Deep Learning for AI (CS313)
 - Bioinformatics (CS3xx)
 
-*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 0.6 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 0.6 · retrieval hit 1 · said not in docs False
 
 ### Q06 [course offerings] What are the prerequisites for Data Structures & Algorithms?
 
@@ -18049,7 +18051,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** The prerequisites for Data Structures & Algorithms are CS101.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q07 [course offerings] What programming language is mainly used in CS201?
 
@@ -18057,7 +18059,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** Java is the main programming language used in CS201.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q08 [course offerings] How often is Computer Networks offered?
 
@@ -18065,7 +18067,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 **Answer:** Once a year
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q09 [learning outcomes] What are the major learning outcomes of the CS program?
 
@@ -18085,7 +18087,7 @@ Graduating with honors means the student has achieved the required academic stan
 
 These outcomes are presented in tables and mapped to the FUV Graduate Attributes.
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 0.67 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 0.67 · retrieval hit 1 · said not in docs False
 
 ### Q10 [learning outcomes] What careers have CS graduates gone into?
 
@@ -18101,7 +18103,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 - Product owner
 - Product development manager
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q11 [academic policies] When can a student formally declare Computer Science as their major?
 
@@ -18109,7 +18111,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** A student can formally declare Computer Science as their major by completing at least two Computer Science courses, specifically MATH 202 - Discrete Math, and one of the following courses: CS 101: Introduction to Programming, CS 103: Programming for Data Science and Visualization, or CS 104: Introduction to Computer Science.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q12 [academic policies] Can exploratory courses count toward the CS major?
 
@@ -18117,7 +18119,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** Yes, exploratory courses can count toward the CS major. According to the document, up to 2 courses (8 credits) can be counted toward the major from the 100-level or 200-level courses chosen from the three categories: E1-Arts and Humanities, E2-Social Sciences, and STEM.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q13 [multi-hop] If I want to take Advanced Deep Learning, which courses must I complete first?
 
@@ -18127,7 +18129,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 - CS313: Deep Learning for Artificial Intelligence (Prerequisites: CS208)
 
-*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.67 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.67 · retrieval hit 1 · said not in docs False
 
 ### Q14 [multi-hop] What is the difference between graduating with and without honors in CS?
 
@@ -18135,7 +18137,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** Graduating with honors in CS typically involves achieving a higher level of academic performance or excellence in specific courses, such as demonstrating exceptional understanding of foundational concepts, explaining emerging aspects of the discipline, and developing real-world applications. Without honors, students may still graduate but may not have the same level of recognition or distinction in their academic achievements.
 
-*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.5 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.5 · retrieval hit 1 · said not in docs False
 
 ### Q15 [ambiguous] What degree is awarded after completing the CS program?
 
@@ -18143,7 +18145,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** Bachelor of Science (B.S.)
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q16 [out of scope] What is the tuition fee for the CS program?
 
@@ -18151,7 +18153,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit  · said not in docs True
 
 ### Q17 [out of scope] Can I transfer credits from another university toward the CS major?
 
@@ -18159,7 +18161,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** No, you cannot transfer credits from another university toward the CS major. According to the document, the CS major requires specific courses and cannot be completed through transfer credits.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit  · said not in docs False
 
 ### Q18 [out of scope] Who won the 2022 FIFA World Cup?
 
@@ -18167,13 +18169,13 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit  · said not in docs True
 
 ## qwen2.5:3b
 
-| avg keyword recall | retrieval hit rate | out-of-scope refused | avg generation |
-|---|---|---|---|
-| 0.68 | 1.00 | 3/3 | 0.9s |
+| avg keyword recall | retrieval hit rate | out-of-scope: said not in docs | in-scope: said not in docs | avg generation |
+|---|---|---|---|---|
+| 0.68 | 1.00 | 3/3 | 1/15 | 0.9s |
 
 ### Q01 [program requirements] How many credits are required for the Computer Science major?
 
@@ -18181,7 +18183,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 **Answer:** The major in Computer Science requires 56 credits.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8467); CS_MajorHandbook.pdf p.7 (0.7933); CS_MajorHandbook.pdf p.13 (0.7629); CS_MajorHandbook.pdf p.2 (0.7468); CS_MajorHandbook.pdf p.11 (0.7391) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q02 [program requirements] What courses are required for the Computer Science major?
 
@@ -18199,7 +18201,7 @@ These outcomes are presented in tables and mapped to the FUV Graduate Attributes
 
 Total required credits for the major are 56.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 0.83 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8521); CS_MajorHandbook.pdf p.11 (0.8056); CS_MajorHandbook.pdf p.8 (0.8029); CS_MajorHandbook.pdf p.7 (0.795); CS_MajorHandbook.pdf p.4 (0.7936) · keyword recall 0.83 · retrieval hit 1 · said not in docs False
 
 ### Q03 [program requirements] What are the requirements for a minor in Computer Science?
 
@@ -18224,7 +18226,7 @@ Total required credits for the major are 56.
 
 These requirements total 24 credits.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.886); CS_MajorHandbook.pdf p.11 (0.7702); CS_MajorHandbook.pdf p.4 (0.7395); CS_MajorHandbook.pdf p.8 (0.7241); CS_MajorHandbook.pdf p.7 (0.718) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q04 [program requirements] Who is eligible to take the Capstone project?
 
@@ -18232,7 +18234,7 @@ These requirements total 24 credits.
 
 **Answer:** Eligibility criteria for enrollment in CS 401: Capstone I include a minimum major GPA of 3.5 and approval of a successful application. (p. 9)
 
-*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.9 (0.7363); CS_MajorHandbook.pdf p.2 (0.6531); CS_MajorHandbook.pdf p.5 (0.6335); CS_MajorHandbook.pdf p.3 (0.5959); CS_MajorHandbook.pdf p.6 (0.5753) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q05 [course offerings] What advanced courses can CS students choose from?
 
@@ -18254,7 +18256,7 @@ These requirements total 24 credits.
 - Natural Language Processing
 - Optimization
 
-*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.12 (0.7759); CS_MajorHandbook.pdf p.18 (0.7753); CS_MajorHandbook.pdf p.8 (0.7722); CS_MajorHandbook.pdf p.7 (0.7678); CS_MajorHandbook.pdf p.8 (0.7549) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q06 [course offerings] What are the prerequisites for Data Structures & Algorithms?
 
@@ -18262,7 +18264,7 @@ These requirements total 24 credits.
 
 **Answer:** The prerequisites for Data Structures & Algorithms (CS201) are CS101.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.8357); CS_MajorHandbook.pdf p.17 (0.7655); CS_MajorHandbook.pdf p.14 (0.7624); CS_MajorHandbook.pdf p.14 (0.7561); CS_MajorHandbook.pdf p.15 (0.7544) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q07 [course offerings] What programming language is mainly used in CS201?
 
@@ -18270,7 +18272,7 @@ These requirements total 24 credits.
 
 **Answer:** CS201: Data Structures & Algorithms uses Java as the main programming language.
 
-*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.14 (0.7997); CS_MajorHandbook.pdf p.16 (0.7951); CS_MajorHandbook.pdf p.15 (0.7841); CS_MajorHandbook.pdf p.16 (0.7489); CS_MajorHandbook.pdf p.18 (0.7399) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q08 [course offerings] How often is Computer Networks offered?
 
@@ -18278,7 +18280,7 @@ These requirements total 24 credits.
 
 **Answer:** Computer Networks is offered once a semester (p.16).
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6455); CS_MajorHandbook.pdf p.16 (0.6392); CS_MajorHandbook.pdf p.13 (0.6021); CS_MajorHandbook.pdf p.18 (0.5908); CS_MajorHandbook.pdf p.17 (0.5839) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q09 [learning outcomes] What are the major learning outcomes of the CS program?
 
@@ -18293,7 +18295,7 @@ These requirements total 24 credits.
 
 These outcomes are mapped to the FUV Graduate Attributes, which include Global Awareness (GA1), Information Literacy (GA4), Critical Thinking (GA5), Communication (GA6), and Problem Solving (GA7 and GA9).
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7884); CS_MajorHandbook.pdf p.12 (0.777); CS_MajorHandbook.pdf p.11 (0.7736); CS_MajorHandbook.pdf p.4 (0.7645); CS_MajorHandbook.pdf p.12 (0.7436) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q10 [learning outcomes] What careers have CS graduates gone into?
 
@@ -18307,7 +18309,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 • Product owner
 • Product development manager
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7575); CS_MajorHandbook.pdf p.6 (0.7243); CS_MajorHandbook.pdf p.4 (0.6959); CS_MajorHandbook.pdf p.4 (0.6626); CS_MajorHandbook.pdf p.14 (0.6604) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q11 [academic policies] When can a student formally declare Computer Science as their major?
 
@@ -18315,7 +18317,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** A student formally declares Computer Science as their major when they complete at least two Computer Science courses, with MATH 202 - Discrete Math also counted towards this requirement (p.7).
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.7934); CS_MajorHandbook.pdf p.4 (0.7856); CS_MajorHandbook.pdf p.1 (0.758); CS_MajorHandbook.pdf p.8 (0.7284); CS_MajorHandbook.pdf p.14 (0.726) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q12 [academic policies] Can exploratory courses count toward the CS major?
 
@@ -18323,7 +18325,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** Yes, exploratory courses can count toward the CS major. According to the document, exploratory courses (2 courses, at the 100-level or 200-level, chosen from each of the three categories: E1-Arts and Humanities, E2-Social Sciences, and STEM) are required for the major and can count towards the total of 56 credits. (p.7)
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.8129); CS_MajorHandbook.pdf p.7 (0.7322); CS_MajorHandbook.pdf p.11 (0.7165); CS_MajorHandbook.pdf p.4 (0.7116); CS_MajorHandbook.pdf p.8 (0.7108) · keyword recall 0.0 · retrieval hit 1 · said not in docs False
 
 ### Q13 [multi-hop] If I want to take Advanced Deep Learning, which courses must I complete first?
 
@@ -18331,7 +18333,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** To take the course Advanced Deep Learning (CS311), you must complete the prerequisite course Deep Learning for Artificial Intelligence (CS313) first.
 
-*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.33 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.18 (0.8271); CS_MajorHandbook.pdf p.18 (0.7698); CS_MajorHandbook.pdf p.18 (0.7487); CS_MajorHandbook.pdf p.8 (0.734); CS_MajorHandbook.pdf p.8 (0.7339) · keyword recall 0.33 · retrieval hit 1 · said not in docs False
 
 ### Q14 [multi-hop] What is the difference between graduating with and without honors in CS?
 
@@ -18339,7 +18341,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.8 (0.7261); CS_MajorHandbook.pdf p.5 (0.6569); CS_MajorHandbook.pdf p.14 (0.6369); CS_MajorHandbook.pdf p.6 (0.6367); CS_MajorHandbook.pdf p.4 (0.6293) · keyword recall 0.0 · retrieval hit 1 · said not in docs True
 
 ### Q15 [ambiguous] What degree is awarded after completing the CS program?
 
@@ -18347,7 +18349,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** The degree awarded after completing the CS program is a Bachelor of Science (B.S.) in Computer Science.
 
-*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 1.0 · retrieval hit 1
+*Retrieved:* CS_MajorHandbook.pdf p.5 (0.7381); CS_MajorHandbook.pdf p.6 (0.7299); CS_MajorHandbook.pdf p.4 (0.7109); CS_MajorHandbook.pdf p.7 (0.6969); CS_MajorHandbook.pdf p.2 (0.6931) · keyword recall 1.0 · retrieval hit 1 · said not in docs False
 
 ### Q16 [out of scope] What is the tuition fee for the CS program?
 
@@ -18355,7 +18357,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.13 (0.6447); CS_MajorHandbook.pdf p.7 (0.6443); CS_MajorHandbook.pdf p.13 (0.6321); CS_MajorHandbook.pdf p.11 (0.6274); CS_MajorHandbook.pdf p.4 (0.6255) · keyword recall  · retrieval hit  · said not in docs True
 
 ### Q17 [out of scope] Can I transfer credits from another university toward the CS major?
 
@@ -18363,7 +18365,7 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.7 (0.6943); CS_MajorHandbook.pdf p.6 (0.6801); CS_MajorHandbook.pdf p.13 (0.679); CS_MajorHandbook.pdf p.4 (0.6686); CS_MajorHandbook.pdf p.7 (0.6647) · keyword recall  · retrieval hit  · said not in docs True
 
 ### Q18 [out of scope] Who won the 2022 FIFA World Cup?
 
@@ -18371,5 +18373,5 @@ These outcomes are mapped to the FUV Graduate Attributes, which include Global A
 
 **Answer:** I couldn't find that in the documents.
 
-*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit 
+*Retrieved:* CS_MajorHandbook.pdf p.3 (0.4918); CS_MajorHandbook.pdf p.6 (0.4723); CS_MajorHandbook.pdf p.16 (0.4688); CS_MajorHandbook.pdf p.17 (0.4656); CS_MajorHandbook.pdf p.18 (0.4591) · keyword recall  · retrieval hit  · said not in docs True
 

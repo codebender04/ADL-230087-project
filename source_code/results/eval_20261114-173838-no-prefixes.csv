@@ -1,4 +1,4 @@
-﻿model,id,category,question,expected,answer,refused,retrieved,best_score,low_confidence,keyword_recall,retrieval_hit,gen_seconds,verdict,notes
+﻿model,id,category,question,expected,answer,says_not_in_docs,retrieved,best_score,low_confidence,keyword_recall,retrieval_hit,gen_seconds,verdict,notes
 qwen2.5:3b,Q01,program requirements,How many credits are required for the Computer Science major?,56 credits for the major requirements.,The Major Requirements section states that the Computer Science major requires a total of 56 credits.,False,CS_MajorHandbook.pdf p.7 (0.801); CS_MajorHandbook.pdf p.4 (0.7009); CS_MajorHandbook.pdf p.11 (0.6775); CS_MajorHandbook.pdf p.7 (0.6753); CS_MajorHandbook.pdf p.6 (0.6709),0.801,False,1.0,1,0.77,,
 qwen2.5:3b,Q02,program requirements,What courses are required for the Computer Science major?,"CS101, CS201, CS203, MATH202, three intermediate courses, CS302, four advanced courses, and Capstone I & II (or two additional intermediate/advanced courses).","For the Computer Science major, the following courses are required:
 
