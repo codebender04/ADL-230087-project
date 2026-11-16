@@ -58,8 +58,18 @@ ANSWER:"""
 
 
 CONDENSE_PROMPT = """Rewrite the follow-up question so it can be understood without the conversation.
-Replace references like "it", "that course" or "the second one" with what they refer to.
-If the question is already standalone, return it unchanged. Output only the question.
+Words like "it", "they", "those", "these", "that course", "the second one" or "them" refer to
+something in the conversation: replace them with what they refer to.
+Only if the question contains no such reference, return it unchanged. Output only the question.
+
+Examples:
+Conversation: User asked about the advanced courses for CS students.
+Follow-up: Which of those are about AI?
+Standalone: Which of the advanced CS courses are about AI?
+
+Conversation: User asked about the prerequisites for Data Structures & Algorithms.
+Follow-up: How many credits is it?
+Standalone: How many credits is Data Structures & Algorithms?
 
 CONVERSATION:
 {history}
@@ -271,7 +281,7 @@ class RAGPipeline:
         prompt = (template
                   .replace("{history}", self._format_history(history, self.s.history_turns))
                   .replace("{context}", context)
-                  .replace("{question}", question))
+                  .replace("{question}", search_query))   # the standalone version, so "those" is resolved
         return Prepared(question, prompt, sources, low_conf, elapsed, search_query)
 
     def stream(self, prepared: Prepared, model: Optional[str] = None,
