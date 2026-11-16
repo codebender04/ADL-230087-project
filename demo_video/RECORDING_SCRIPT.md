@@ -107,10 +107,11 @@ Note: the live answers in Part C match the evaluation run word for word, so you 
 | 2 | Open `docker/docker-compose.yml`. | "Compose runs three containers together. **ollama** is the model server. **model-init** downloads the two models once and then exits. **app** is my chatbot. The handbook folder is mounted, so documents can be swapped without rebuilding. The models and the vector index are kept in named volumes, so they survive restarts." |
 | 3 | Run:<br>`docker compose -f docker/docker-compose.yml -f docker/docker-compose.gpu.yml up --build -d` | "This builds the image and starts everything. The second file gives the Ollama container my GPU." |
 | 4 | `docker ps` | "The ollama and app containers are running. model-init has already finished." |
-| 5 | `docker compose -f docker/docker-compose.yml logs app` | "The app embedded the handbook inside the container." |
+| 5 | `docker compose -f docker/docker-compose.yml logs app --tail 15` | "These are the app's logs: Streamlit started on port 8501 inside the container." (If you've opened the page already, you'll also see the index line.) |
 | 6 | Open http://localhost:8501 and ask a question. | "The same chatbot, now running entirely inside Docker." |
-| 7 | `docker compose -f docker/docker-compose.yml restart app`, then show the logs again. | "After a restart it says *Loaded existing index* instead of embedding again. The vector store volume kept the index." |
-| 8 | `docker compose -f docker/docker-compose.yml down` | "This stops it. Adding `-v` would also delete the volumes." |
+| 7 | `docker compose -f docker/docker-compose.yml restart app`, wait about 10 s, then **refresh the browser page** (F5) and ask a question. | "Now I restart the app container. That throws away the running container's memory." |
+| 8 | `docker compose -f docker/docker-compose.yml logs app --tail 15` | "After the restart, the last line says *Loaded existing index ... 64 chunks*, not *Embedding 64 chunks*. The index was saved in the `vector_store` volume, so it survived the restart and didn't need to be rebuilt. Streamlit only loads the pipeline when someone opens the page, which is why I refreshed the browser first." |
+| 9 | `docker compose -f docker/docker-compose.yml down` | "This stops it. Adding `-v` would also delete the volumes." |
 
 Tip: if the first `up` has to download models (~2.3 GB), pause the recording or cut that part out.
 When you're done, start the Ollama tray app again.
